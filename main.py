@@ -3,10 +3,17 @@
 
 import json, requests
 
-url = 'http://challenge.code2040.org/api/register'
-api_token = 'a4fc745af73d19fc0356b3cc4b9f1243'
-github_url = 'https://github.com/petrosdawit/code2040-api-challenge'
-info = json.dumps({'token' : api_token, 'github' : github_url})
+class Code2040(object):
 
-req = requests.post(url, api_token, github_url)
-print req.url
+	def __init__(self):
+		url = 'http://challenge.code2040.org/api/register'
+		api_token = 'a4fc745af73d19fc0356b3cc4b9f1243'
+		github_url = 'https://github.com/petrosdawit/code2040-api-challenge'
+		payload = json.dumps({'token' : api_token, 'github' : github_url})
+
+		r = requests.post(url, params = payload)	
+		print r.url
+
+if __name__ == '__main__':
+	code2040 = Code2040()
+
